@@ -1,0 +1,91 @@
+<div class="home-container">
+  <div class="background-elements">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+  </div>
+
+  <div class="container my-5 position-relative z-index-1">
+    <div class="welcome-section text-center mb-5 animate__animated animate__fadeInDown">
+      <h1 class="display-3 fw-bold welcome-title">
+        Welcome Back <span class="text-primary">{{ userName }}</span>! </h1>
+      <p *ngIf="userRole === 'USER'" class="lead text-muted">Ready to explore more amazing products and manage your orders?</p>
+      <p *ngIf="userRole === 'ADMIN'" class="lead text-muted">Welcome to the Admin Dashboard. Manage your e-commerce platform efficiently!</p>
+    </div>
+
+    <div *ngIf="userRole === 'USER'" class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+      <div class="col animate__animated animate__fadeInUp animate__delay-0-2s">
+        <div class="card home-card h-100 text-center">
+          <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
+            <i class="bi bi-shop-window card-icon mb-3"></i>
+            <h5 class="card-title fw-bold">Shop Products</h5>
+            <p class="card-text text-muted">Discover our latest collection and bestsellers.</p>
+            <a [routerLink]="['/products']" class="btn btn-primary mt-3 btn-home-action">
+              <i class="bi bi-arrow-right-short me-2"></i>Go to Shop
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col animate__animated animate__fadeInUp animate__delay-0-4s">
+        <div class="card home-card h-100 text-center">
+          <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
+            <i class="bi bi-cart-fill card-icon mb-3"></i>
+            <h5 class="card-title fw-bold">View Your Cart</h5>
+            <p class="card-text text-muted">Review items in your cart and proceed to checkout.</p>
+            <a [routerLink]="['/cart']" class="btn btn-outline-primary mt-3 btn-home-action">
+              <i class="bi bi-arrow-right-short me-2"></i>My Cart
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col animate__animated animate__fadeInUp animate__delay-0-6s">
+        <div class="card home-card h-100 text-center">
+          <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
+            <i class="bi bi-box-seam-fill card-icon mb-3"></i>
+            <h5 class="card-title fw-bold">Track Your Orders</h5>
+            <p class="card-text text-muted">Check the status of your recent and past purchases.</p>
+            <a [routerLink]="['/orders']" class="btn btn-outline-secondary mt-3 btn-home-action">
+              <i class="bi bi-arrow-right-short me-2"></i>My Orders
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="userRole === 'ADMIN'" class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+      <div class="col animate__animated animate__fadeInUp animate__delay-0-2s">
+        <div class="card home-card h-100 text-center">
+          <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
+            <i class="bi bi-box-seam card-icon mb-3"></i> <h5 class="card-title fw-bold">Manage Products</h5>
+            <p class="card-text text-muted">Add, update, or remove products in your catalog.</p>
+            <a [routerLink]="['/products']" class="btn btn-primary mt-3 btn-home-action"> <i class="bi bi-arrow-right-short me-2"></i>Manage Products
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col animate__animated animate__fadeInUp animate__delay-0-4s">
+        <div class="card home-card h-100 text-center">
+          <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
+            <i class="bi bi-people-fill card-icon mb-3"></i> <h5 class="card-title fw-bold">Manage Users</h5>
+            <p class="card-text text-muted">View and manage Customers.</p>
+            <a [routerLink]="['/users']" class="btn btn-outline-primary mt-3 btn-home-action"> <i class="bi bi-arrow-right-short me-2"></i>Manage Users
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col animate__animated animate__fadeInUp animate__delay-0-6s">
+        <div class="card home-card h-100 text-center">
+          <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
+            <i class="bi bi-clipboard-check-fill card-icon mb-3"></i> <h5 class="card-title fw-bold">Manage Orders</h5>
+            <p class="card-text text-muted">Process and track all customer orders.</p>
+            <a [routerLink]="['/orders']" class="btn btn-outline-secondary mt-3 btn-home-action"> <i class="bi bi-arrow-right-short me-2"></i>Manage Orders
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

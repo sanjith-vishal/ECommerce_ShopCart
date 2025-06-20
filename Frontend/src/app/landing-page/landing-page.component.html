@@ -1,0 +1,82 @@
+<div class="landing-container">
+  <div class="background-elements">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+  </div>
+
+  <div class="container my-5 position-relative z-index-1">
+    <div class="hero-section text-center py-5 mb-5 animate__animated animate__fadeIn">
+      <div class="container">
+        <h1 class="display-3 fw-bold animate__animated animate__fadeInDown text-white mb-4">
+          Discover Your Next Favorite Product
+        </h1>
+        <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s text-white-100">
+          Explore a world of quality products and amazing deals.
+        </p>
+        <a class="btn btn-light btn-lg rounded-pill px-5 py-3 animate__animated animate__zoomIn animate__delay-2s"
+           [routerLink]="common.isLoggedIn ? '/products' : '/login'" role="button">
+          <i class="bi bi-shop me-2"></i>
+          {{ common.isLoggedIn ? 'Start Shopping Now!' : 'Login to Shop' }}
+        </a>
+      </div>
+    </div>
+
+    <div class="my-5 py-4 animate__animated animate__fadeInUp">
+      <h2 class="section-title mb-5 text-center">
+        <i class="bi bi-star-fill me-2 text-warning"></i>Our Top Picks
+      </h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="col" *ngFor="let product of featuredProducts">
+          <div class="card h-100 product-card animate__animated animate__fadeInUp">
+            <img [src]="product.imageUrl" class="card-img-top product-img" [alt]="product.name">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title product-title">{{ product.name }}</h5>
+              <p class="card-text product-price">Price: ₹{{ product.price | number:'1.2-2' }}</p>
+              <div class="mt-auto text-center">
+                <a class="btn btn-sm btn-outline-primary rounded-pill px-4"
+                   [routerLink]="common.isLoggedIn ? '/products' : '/login'"
+                   role="button">
+                   <i class="bi bi-eye-fill me-1"></i> View Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a class="btn btn-lg btn-info rounded-pill px-5 py-3 animate__animated animate__zoomIn"
+           [routerLink]="common.isLoggedIn ? '/products' : '/login'" role="button">
+          <i class="bi bi-box-seam me-2"></i> {{ common.isLoggedIn ? 'View All Products' : 'Login to View Products' }}
+        </a>
+      </div>
+    </div>
+
+    <div class="my-5 py-4 text-center bg-light rounded-3 p-5 shadow-sm animate__animated animate__fadeInUp">
+      <h2 class="section-title mb-4">
+        <i class="bi bi-patch-check-fill me-2 text-success"></i>Why Choose ShopCart?
+      </h2>
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-4">
+          <i class="bi bi-truck-flatbed display-4 text-primary mb-3"></i>
+          <h4 class="fw-bold">Fast Delivery</h4>
+          <p class="text-muted">Get your products delivered quickly and safely.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-award-fill display-4 text-warning mb-3"></i>
+          <h4 class="fw-bold">Quality Assured</h4>
+          <p class="text-muted">We source only the best products for you.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-arrow-return-left display-4 text-danger mb-3"></i>
+          <h4 class="fw-bold">Easy Returns</h4>
+          <p class="text-muted">Hassle-free returns on all eligible items.</p>
+        </div>
+      </div>
+      <a class="btn btn-lg btn-secondary rounded-pill px-5 py-3 animate__animated animate__pulse animate__infinite"
+         [routerLink]="common.isLoggedIn ? '/products' : '/register'" role="button">
+        <i class="bi bi-arrow-right-circle-fill me-2"></i> {{ common.isLoggedIn ? 'Continue Shopping' : 'Join ShopCart Today!' }}
+      </a>
+    </div>
+  </div>
+</div>

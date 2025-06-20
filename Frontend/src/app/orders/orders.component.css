@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.orders-container {
+  min-height: calc(100vh - var(--header-height, 80px) - var(--footer-height, 200px));
+  background-color: #f0f2f5;
+  padding-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3f51b5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title i {
+  color: #2196f3;
+}
+
+/* Order Card Styles */
+.order-card {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  overflow: hidden; /* Ensures rounded corners */
+}
+
+.order-header {
+  background-color: #e8eaf6; /* Light blue header */
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3f51b5;
+  border-bottom: 1px solid #c5cae9;
+}
+
+.order-status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.order-status.bg-success {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+.order-status.bg-warning {
+    background-color: #ffc107 !important;
+    color: #333;
+}
+.order-status.bg-info {
+    background-color: #17a2b8 !important;
+    color: white;
+}
+
+
+.order-body {
+  padding: 1.5rem;
+  font-size: 1rem;
+}
+
+.order-body .label {
+  color: #6c757d; /* Muted label color */
+}
+
+.order-items-preview {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.order-items-preview li {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.order-items-preview li i {
+  color: #2196f3; /* Blue dot icon */
+}
+
+
+.order-footer {
+  background-color: #f8f9fa; /* Lighter footer */
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.btn-view-details {
+  background-color: transparent;
+  color: #3f51b5;
+  border: 1px solid #3f51b5;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-view-details:hover {
+  background-color: #e8eaf6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(63, 81, 181, 0.1);
+}
+
+/* No Orders Card */
+.no-orders-card {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+}
+
+.no-orders-card .display-1 {
+  font-size: 6rem;
+  color: #bdbdbd;
+}
+
+.no-orders-card .lead {
+  font-size: 1.2rem;
+}
+
+.btn-home-action { /* Reusing button style from home page */
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #2196f3;
+  border-color: #2196f3;
+  color: #fff;
+}
+
+.btn-home-action:hover {
+  background-color: #1976d2;
+  border-color: #1976d2;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
+}
+
+
+/* CSS for progress tracker */
+.order-progress-tracker {
+  padding: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  background-color: #fcfcfc;
+  display: flex; /* Ensures inner flexbox is contained */
+  flex-direction: column; /* Stacks progress steps and message */
+  align-items: center; /* Centers the timeline and message */
+}
+
+.progress-steps-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 700px; /* Limit max width for better aesthetic on large screens */
+  margin: 0 auto; /* Center the timeline itself */
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0; /* Prevent shrinking when space is tight */
+  position: relative;
+  text-align: center;
+  padding: 0 5px; /* Add some padding to prevent label overlap */
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e0e0e0; /* Default grey */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  z-index: 1; /* Ensure circle is above the line */
+  border: 2px solid #e0e0e0; /* Default border */
+}
+
+.step-circle i {
+  font-size: 1.2rem;
+}
+
+.step-label {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6c757d; /* Muted text */
+  transition: color 0.3s ease;
+  font-weight: 500;
+  white-space: nowrap; /* Prevent labels from wrapping */
+}
+
+.step-line {
+  flex-grow: 1; /* Make the line fill available space between steps */
+  height: 2px;
+  background-color: #e0e0e0; /* Default grey */
+  transition: background-color 0.3s ease;
+  /* Adjust margin to butt up against step circles */
+  margin: 0 -10px; /* Negative margin to overlap with step padding */
+}
+
+/* Specific styles for completed and active steps */
+.progress-step.completed .step-circle {
+  background-color: #28a745; /* Green for completed */
+  border-color: #28a745;
+  color: white;
+}
+
+.progress-step.completed .step-label {
+  color: #333; /* Darker text for completed */
+}
+
+.progress-step.active .step-circle {
+  background-color: #007bff; /* Blue for active */
+  border-color: #007bff;
+  color: white;
+  transform: scale(1.1); /* Slight enlarge for active */
+  box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.progress-step.active .step-label {
+  color: #007bff; /* Blue text for active */
+  font-weight: 600;
+}
+
+/* Line styling */
+/* Line after a completed step or an active step should be colored */
+.step-line.line-completed {
+    background-color: #28a745; /* Green */
+}
+
+.step-line.line-active {
+    background-color: #007bff; /* Blue */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .progress-steps-container {
+    flex-wrap: wrap; /* Allow steps to wrap to next line */
+    justify-content: space-around; /* Distribute steps evenly when wrapped */
+    padding: 0 10px;
+  }
+  .progress-step {
+    width: 30%; /* Approx 3 per row */
+    margin-bottom: 20px;
+  }
+  .step-label {
+    font-size: 0.7rem; /* Smaller font for small screens */
+    white-space: normal; /* Allow wrapping for labels */
+  }
+  .step-line {
+    display: none; /* Hide lines when wrapping for simplicity */
+  }
+  /* Re-align .progress-steps-container on small screens */
+  .order-progress-tracker {
+    align-items: stretch; /* Stretch to fit content */
+  }
+}
+
+/* Ensure padding around order cards for overall layout */
+.order-list {
+  padding: 0 15px; /* Add padding to the container holding cards */
+}

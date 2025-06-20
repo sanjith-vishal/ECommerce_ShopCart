@@ -1,0 +1,114 @@
+<div class="users-container">
+  <div class="container my-5">
+    <h2 class="section-title text-center mb-5 animate__animated animate__fadeInDown">
+      <i class="bi bi-people-fill me-3"></i>Manage Customers
+    </h2>
+
+    <div class="row mb-4 animate__animated animate__fadeInUp">
+      <div class="col-md-6 offset-md-3">
+        <label for="searchUsers" class="form-label">Search Users:</label>
+        <div class="input-group">
+          <input type="text" id="searchUsers" class="form-control custom-input" placeholder="Search by name or email..." [(ngModel)]="searchTerm" (input)="filterUsers()">
+          <button class="btn btn-primary search-btn" (click)="filterUsers()"><i class="bi bi-search"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-end mb-4 animate__animated animate__fadeInRight">
+      <button class="btn btn-success" (click)="openUserModal()">
+        <i class="bi bi-person-plus-fill me-2"></i>Add New Customer
+      </button>
+    </div>
+
+    <ng-container *ngIf="filteredUsers.length > 0; else noUsers">
+      <div class="table-responsive user-table-responsive animate__animated animate__fadeIn">
+        <table class="table table-hover user-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Shipping Address</th>
+              <th scope="col" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of filteredUsers; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              <td>{{ user.shippingAddress }}</td>
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm me-2 edit-btn" (click)="editUser(user)">
+                  <i class="bi bi-pencil-square"></i> Edit
+                </button>
+                <button class="btn btn-danger btn-sm delete-btn" (click)="deleteUser(user.userId)">
+                  <i class="bi bi-trash-fill"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <ng-template #noUsers>
+      <div class="card p-5 text-center no-users-card animate__animated animate__fadeIn">
+        <i class="bi bi-person-x-fill display-1 text-muted mb-3"></i>
+        <p class="lead text-muted">No customers found matching your criteria.</p>
+        <button class="btn btn-primary mt-3 btn-home-action" (click)="openUserModal()">
+          <i class="bi bi-person-add me-2"></i>Add First Customer
+        </button>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+
+<div class="modal fade" [ngClass]="{'show d-block': showModal}" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true" (click)="closeModalOnBackdropClick($event)">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userModalLabel">{{ isEditMode ? 'Edit Customer' : 'Add New Customer' }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeUserModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form #userForm="ngForm">
+          <div class="mb-3" *ngIf="isEditMode">
+            <label for="userId" class="form-label">User ID</label>
+            <input type="number" class="form-control" id="userId" name="userId" [(ngModel)]="currentUser.userId" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="currentUser.name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="currentUser.email" required>
+          </div>
+          <div class="mb-3" *ngIf="!isEditMode">
+            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="currentUser.password" required>
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="currentUser.phoneNumber" required>
+          </div>
+          <div class="mb-3">
+            <label for="shippingAddress" class="form-label">Shipping Address</label>
+            <textarea class="form-control" id="shippingAddress" name="shippingAddress" [(ngModel)]="currentUser.shippingAddress" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeUserModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveOrUpdateUser()" [disabled]="!userForm.valid">
+          {{ isEditMode ? 'Update Customer' : 'Add Customer' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade" [ngClass]="{'show': showModal}"></div>

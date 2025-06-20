@@ -1,0 +1,122 @@
+<div class="orders-container">
+  <div class="container my-5">
+    <h2 class="section-title text-center mb-5 animate__animated animate__fadeInDown" *ngIf="userRole === 'USER'">
+      <i class="bi bi-box-seam-fill me-3"></i>Your Orders
+    </h2>
+    <h2 class="section-title text-center mb-5 animate__animated animate__fadeInDown" *ngIf="userRole === 'ADMIN'">
+      <i class="bi bi-box-seam-fill me-3"></i>All Orders
+    </h2>
+
+    <div class="row">
+      <div class="col-12">
+        <ng-container *ngIf="orders.length > 0; else noOrders">
+          <div class="order-list">
+            <div class="card order-card mb-4 animate__animated animate__fadeInUp" *ngFor="let order of orders">
+              <div class="card-header d-flex justify-content-between align-items-center order-header">
+                <h5 class="mb-0">Order Id #{{ order.id }}</h5>
+                <span class="badge" [ngClass]="{
+                    'bg-success': order.status === 'Delivered',
+                    'bg-primary': order.status === 'Placed',
+                    'bg-info': order.status === 'Processing',
+                    'bg-warning': order.status === 'Shipped',
+                    'bg-danger': order.status === 'Cancelled'
+                  }"
+                  class="order-status"
+                  >{{ order.status }}</span>
+              </div>
+              <div class="card-body order-body">
+                <div class="row">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-1"><strong class="label">Order Date:</strong> {{ order.date | date:'mediumDate' }}</p>
+                    <p class="mb-1"><strong class="label">Total Amount:</strong> ₹{{ order.total | number:'1.2-2' }}</p>
+                    <p class="mb-1"><strong class="label">Payment Status:</strong> {{ order.paymentStatus }}</p>
+                    <p class="mb-1"><strong class="label">Shipping Address:</strong> {{ order.shippingAddress }}</p>
+                    <p class="mb-0"><strong class="label">Items:</strong> {{ order.items.length }}</p>
+                    <p *ngIf="userRole === 'ADMIN'" class="mb-0">
+                      <strong class="label">User ID:</strong> {{ order.userId }}
+                      <span *ngIf="order.userName"> (<strong class="label">User Name:</strong> {{ order.userName }})</span>
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <ul class="list-unstyled order-items-preview">
+                      <ng-container *ngIf="order.items.length > 0; else noItemsInOrder">
+                        <li *ngFor="let item of order.items.slice(0, 2)">
+                          <i class="bi bi-dot me-1"></i>{{ item.name }} (x{{ item.quantity }})
+                        </li>
+                        <li *ngIf="order.items.length > 2">
+                          <i class="bi bi-three-dots"></i> and {{ order.items.length - 2 }} more...
+                        </li>
+                      </ng-container>
+                      <ng-template #noItemsInOrder>
+                          <li><i class="bi bi-exclamation-circle me-1"></i>No item details available</li>
+                      </ng-template>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Horizontal Progress Tracker Section -->
+              <div class="card-body order-progress-tracker" *ngIf="order.status !== 'Cancelled'">
+                <div class="progress-steps-container">
+                  <ng-container *ngFor="let status of orderStatuses; let i = index">
+                    <div class="progress-step"
+                         [class.active]="isStatusActive(order.status, status, orderStatuses)"
+                         [class.completed]="isStatusCompleted(order.status, status, orderStatuses)">
+                      <div class="step-circle">
+                          <i *ngIf="isStatusCompleted(order.status, status, orderStatuses)" class="bi bi-check-circle-fill"></i>
+                          <i *ngIf="!isStatusCompleted(order.status, status, orderStatuses) && isStatusActive(order.status, status, orderStatuses)" class="bi bi-circle-fill"></i>
+                          <i *ngIf="!isStatusCompleted(order.status, status, orderStatuses) && !isStatusActive(order.status, status, orderStatuses)" class="bi bi-circle"></i>
+                      </div>
+                      <div class="step-label">{{ status }}</div>
+                    </div>
+                    <!-- Line between steps -->
+                    <div *ngIf="i < orderStatuses.length - 1" class="step-line"
+                         [class.line-completed]="isStatusCompleted(order.status, orderStatuses[i], orderStatuses)"
+                         [class.line-active]="isStatusActive(order.status, orderStatuses[i], orderStatuses)">
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="current-status-message mt-3 text-center">
+                  <p class="mb-0 text-muted">Current Status: <span class="fw-bold" [ngClass]="{'text-success': order.status === 'Delivered', 'text-primary': order.status === 'Placed' || order.status === 'Processing' || order.status === 'Shipped'}">{{ order.status }}</span></p>
+                </div>
+              </div>
+              <!-- End Horizontal Progress Tracker Section -->
+
+              <div class="card-footer text-end order-footer">
+                <ng-container *ngIf="userRole === 'ADMIN'">
+                  <div class="d-flex justify-content-end align-items-center">
+                    <ng-container *ngIf="!order.isEditingStatus">
+                      <button class="btn btn-outline-secondary btn-sm me-2" (click)="toggleEditStatus(order)">
+                        <i class="bi bi-pencil-fill me-1"></i>Edit Status
+                      </button>
+                    </ng-container>
+                    <ng-container *ngIf="order.isEditingStatus">
+                      <select class="form-select form-select-sm me-2" [(ngModel)]="order.selectedStatus">
+                        <option *ngFor="let status of orderStatusesForAdmin" [value]="status">{{ status }}</option>
+                      </select>
+                      <button class="btn btn-success btn-sm me-2" (click)="updateOrderStatus(order)">
+                        <i class="bi bi-check-lg me-1"></i>Save
+                      </button>
+                      <button class="btn btn-outline-danger btn-sm" (click)="toggleEditStatus(order)">
+                        <i class="bi bi-x-lg me-1"></i>Cancel
+                      </button>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noOrders>
+          <div class="card p-5 text-center no-orders-card animate__animated animate__fadeIn">
+            <i class="bi bi-journal-x display-1 text-muted mb-3"></i>
+            <p class="lead text-muted">You haven't placed any orders yet.</p>
+            <a [routerLink]="['/products']" class="btn btn-primary mt-3 btn-home-action">
+              <i class="bi bi-shop me-2"></i>Start Shopping
+            </a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

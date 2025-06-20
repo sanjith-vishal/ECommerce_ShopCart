@@ -1,0 +1,42 @@
+  <div class="profile-container container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm p-4 animate__animated animate__fadeIn">
+          <h2 class="card-title text-center mb-4">
+            <i class="bi bi-person-circle me-2" style="color: #3f51b5;"></i>My Profile
+          </h2>
+          <hr>
+          <form #profileForm="ngForm" (ngSubmit)="saveProfile()">
+            <div class="mb-3">
+              <label for="id" class="form-label">ID</label>
+              <input type="text" class="form-control" id="id" name="id"
+                     [ngModel]="isUser ? currentUserProfile.userId : currentUserProfile.adminId" disabled>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="currentUserProfile.name" disabled>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="currentUserProfile.email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phoneNumber" class="form-label">Phone Number</label>
+              <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="currentUserProfile.phoneNumber" required>
+            </div>
+  
+            <div class="mb-3" *ngIf="isUser">
+              <label for="shippingAddress" class="form-label">Shipping Address</label>
+              <textarea class="form-control" id="shippingAddress" name="shippingAddress" [(ngModel)]="currentUserProfile.shippingAddress" required></textarea>
+            </div>
+  
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="!profileForm.valid">
+                <i class="bi bi-save me-2"></i>Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="card login-card animate__animated animate__fadeInUp">
+    <div class="card-body p-5">
+      <h3 class="card-title text-center mb-4 login-title">
+        <i class="bi bi-box-arrow-in-right me-2"></i>Welcome Back!
+      </h3>
+      <p class="card-text text-center text-muted mb-5 sub-heading">Sign in to your account to continue.</p>
+
+      <form #frm="ngForm" (ngSubmit)="validated(frm)">
+        <div class="mb-4">
+          <label for="name" class="form-label">User Name:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input type="text" ngModel name="name" class="form-control" id="name"
+              placeholder="Enter your user name" required>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="password" class="form-label">Password:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+            <input type="password" ngModel class="form-control" name="password" id="password"
+              placeholder="Enter your password" required>
+          </div>
+        </div>
+
+        <div class="d-grid gap-3 mt-5">
+          <button type="submit" class="btn btn-primary btn-login">
+            <i class="bi bi-arrow-right-short me-2"></i>Login
+          </button>
+          <a routerLink="/register" class="btn btn-outline-secondary btn-register-link">
+            <i class="bi bi-person-plus-fill me-2"></i>New User? Register here
+          </a> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<router-outlet />

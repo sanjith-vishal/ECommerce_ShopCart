@@ -1,0 +1,162 @@
+<div class="products-container">
+  <div class="container my-5">
+    <h2 class="section-title text-center mb-5 animate__animated animate__fadeInDown" *ngIf="role === 'USER'">
+      <i class="bi bi-grid-3x3-gap-fill me-3"></i>Explore Our Products
+    </h2>
+    <h2 class="section-title text-center mb-5 animate__animated animate__fadeInDown" *ngIf="role === 'ADMIN'">
+      <i class="bi bi-grid-3x3-gap-fill me-3"></i>Manage Your Products
+    </h2>
+
+    <div class="row mb-4 animate__animated animate__fadeInUp">
+      <div class="col-md-4 mb-3">
+        <label for="categoryFilter" class="form-label">Category:</label>
+        <select id="categoryFilter" class="form-select custom-select" [(ngModel)]="selectedCategory" (change)="filterProducts()">
+          <option value="">All Categories</option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion</option>
+          <option value="grocery">Grocery</option>
+          <option value="books">Books</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="sortOption" class="form-label">Sort by:</label>
+        <select id="sortOption" class="form-select custom-select" [(ngModel)]="selectedSortOption" (change)="applyFiltersAndSort()">
+          <option value="">Default</option>
+          <option value="low-to-high">Price: Low to High</option>
+          <option value="high-to-low">Price: High to Low</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="searchProducts" class="form-label">Search:</label>
+        <div class="input-group">
+          <input type="text" id="searchProducts" class="form-control custom-input" placeholder="Search products..." [(ngModel)]="searchTerm" (input)="applyFiltersAndSort()">
+          <button class="btn btn-primary search-btn" (click)="applyFiltersAndSort()"><i class="bi bi-search"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4 animate__animated animate__fadeInUp justify-content-center">
+      <div class="col-md-6">
+        <label class="form-label">Filter by Price Range:</label>
+        <div class="input-group">
+          <input type="number" class="form-control custom-input" placeholder="Min Price" [(ngModel)]="minPrice" min="0">
+          <span class="input-group-text">-</span>
+          <input type="number" class="form-control custom-input" placeholder="Max Price" [(ngModel)]="maxPrice" min="0">
+          <button class="btn btn-info filter-range-btn" (click)="filterByPriceRange()">
+            <i class="bi bi-currency-rupee me-2"></i>Filter
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-end mb-4" *ngIf="role === 'ADMIN'">
+      <button class="btn btn-success animate__animated animate__fadeInRight" (click)="openProductModal()">
+        <i class="bi bi-plus-circle-fill me-2"></i>Add New Product
+      </button>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col animate__animated animate__zoomIn" *ngFor="let product of filteredProducts">
+        <div class="card product-card h-100">
+          <img [src]="product.imageURL" class="card-img-top product-img" [alt]="product.productName">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title product-title">{{ product.productName }}</h5>
+            <p class="card-text product-description">{{ product.description }}</p>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="product-price">₹{{ product.price | number:'1.2-2' }}</span>
+              <span class="product-quantity" [ngClass]="{'text-danger': product.quantity === 0}">
+                {{ product.quantity === 0 ? 'Out of Stock' : 'Qty: ' + product.quantity }}
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+              <button class="btn btn-primary add-to-cart-btn" *ngIf="role === 'USER' && product.quantity > 0" (click)="addToCart(product)">
+                <i class="bi bi-bag-plus me-2"></i>Add to Cart
+              </button>
+              <button class="btn btn-primary add-to-cart-btn disabled" *ngIf="role === 'USER' && product.quantity === 0" disabled>
+                <i class="bi bi-bag-plus me-2"></i>Add to Cart
+              </button>
+
+              <button class="btn btn-warning edit-btn" *ngIf="role === 'ADMIN' " (click)="editProduct(product)">
+                <i class="bi bi-pencil-square me-2"></i>Edit
+              </button>
+              <button class="btn btn-danger delete-btn ms-2" *ngIf="role === 'ADMIN' " (click)="deleteProduct(product.productId)">
+                <i class="bi bi-trash-fill me-2"></i>Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="filteredProducts.length === 0" class="text-center py-5">
+      <i class="bi bi-box-seam-fill display-1 text-muted mb-3"></i>
+      <p class="lead text-muted">No products found matching your criteria.</p>
+    </div>
+
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div *ngFor="let toast of toasts" class="toast fade show" [ngClass]="'text-bg-' + toast.type" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Notification</strong>
+        <small class="text-body-secondary">Just now</small>
+        <button type="button" class="btn-close" (click)="removeToast(toast.id)" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        {{ toast.message }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" [ngClass]="{'show d-block': showModal}" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true" (click)="closeModalOnBackdropClick($event)">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalLabel">{{ isEditMode ? 'Edit Product' : 'Add New Product' }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeProductModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form #productForm="ngForm">
+          <div class="mb-3">
+            <label for="productId" class="form-label">Product ID (Auto-generated)</label>
+            <input type="number" class="form-control" id="productId" name="productId" [(ngModel)]="currentProduct.productId" disabled>
+          </div>
+          <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="currentProduct.productName" required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" [(ngModel)]="currentProduct.description" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" [(ngModel)]="currentProduct.price" required min="0.01" step="0.01">
+          </div>
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" name="category" [(ngModel)]="currentProduct.category" required>
+          </div>
+          <div class="mb-3">
+            <label for="imageURL" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="imageURL" name="imageURL" [(ngModel)]="currentProduct.imageURL" required>
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity in Stock</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="currentProduct.quantity" required min="0">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeProductModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveOrUpdateProduct()" [disabled]="!productForm.valid">
+          {{ isEditMode ? 'Update Product' : 'Add Product' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade" [ngClass]="{'show': showModal}"></div>

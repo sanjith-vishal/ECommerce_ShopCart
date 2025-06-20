@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5; /* Light gray background */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Overall container for consistent background and positioning */
+.landing-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%); /* Soft blue gradient */
+  position: relative;
+  overflow: hidden; /* Prevent content from overflowing the gradient */
+}
+
+/* Background elements for visual interest */
+.background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.circle {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  filter: blur(60px); /* Slightly increased blur for more softness */
+  animation: pulse 10s infinite alternate;
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: 5%;
+  left: 10%;
+  background: rgba(179, 229, 252, 0.4);
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 400px;
+  height: 400px;
+  bottom: 15%;
+  right: 15%;
+  background: rgba(144, 202, 249, 0.4);
+  animation-delay: 2s;
+}
+
+.circle-3 {
+  width: 200px;
+  height: 200px;
+  top: 30%;
+  right: 5%;
+  background: rgba(200, 230, 201, 0.4); /* A touch of green for variety */
+  animation-delay: 4s;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.05); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0.2; }
+}
+
+/* Z-index for content to be above background elements */
+.z-index-1 {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Section - Now a full-width banner */
+.hero-section {
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Centers the element relative to viewport */
+  padding-top: 100px; /* Increased padding for more vertical space */
+  padding-bottom: 100px; /* Increased padding for more vertical space */
+  background: linear-gradient(135deg, #73ec85 0%, #0086f4 100%); /* Deeper blue gradient */
+  color: #fff; /* White text for contrast */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0; /* Remove rounded corners for full banner effect */
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  text-align: center; /* Ensure text is centered */
+  overflow: hidden; /* Hide any overflow from background elements */
+}
+
+/* The .container inside hero-section limits content width */
+.hero-section .container {
+    max-width: 960px; /* Adjust as needed */
+    z-index: 2; /* Ensure content is above any potential overlay */
+}
+
+.hero-section h1 {
+  font-size: 3.8rem; /* Slightly larger for impact */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section p {
+  font-size: 1.6rem; /* Slightly larger */
+  font-weight: 300; /* Lighter font weight for lead text */
+  margin-bottom: 2.5rem; /* More space below paragraph */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section .btn-light { /* Changed to btn-light for visibility */
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #2196f3; /* Blue text on white button */
+  padding: 18px 45px; /* Larger button */
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.hero-section .btn-light:hover {
+  background-color: #e0e0e0;
+  border-color: #e0e0e0;
+  color: #1976d2;
+  transform: translateY(-5px); /* More pronounced lift on hover */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3f51b5;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Product Cards */
+.product-card {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Lighter shadow for product cards */
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+}
+
+.product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-img {
+  height: 250px; /* Fixed height for product images */
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.product-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #424242;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2196f3; /* Blue for price */
+  margin-bottom: 15px;
+}
+
+.btn-add-to-cart { /* Kept in case you add it later */
+  background-color: #3f51b5; /* Deeper blue for cart button */
+  border-color: #3f51b5;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #303f9f; /* Darker blue on hover */
+  border-color: #303f9f;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+.btn-info { /* New style for View All Products button */
+  background-color: #00bcd4; /* Cyan color */
+  border-color: #00bcd4;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-info:hover {
+  background-color: #0097a7;
+  border-color: #0097a7;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+  .hero-section p {
+    font-size: 1.4rem;
+  }
+  .hero-section .btn-light {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+  .hero-section .btn-light {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .product-img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .hero-section .btn-light {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .product-img {
+    height: 180px;
+  }
+  .product-title {
+    font-size: 1.2rem;
+  }
+  .product-price {
+    font-size: 1rem;
+  }
+}

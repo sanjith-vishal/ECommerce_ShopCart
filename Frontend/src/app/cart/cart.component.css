@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.cart-container {
+  min-height: calc(100vh - var(--header-height, 80px) - var(--footer-height, 200px));
+  background-color: #f0f2f5;
+  padding-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3f51b5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title i {
+  color: #2196f3;
+}
+
+/* Cart Items Card */
+.cart-items-card,
+.cart-summary-card {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+}
+
+.cart-item {
+  padding: 15px 0;
+}
+
+.cart-item-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #424242;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3f51b5;
+  margin-bottom: 10px;
+}
+
+.qty-input {
+  width: 70px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #c5cae9;
+  text-align: center;
+}
+
+.remove-btn {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+/* Empty Cart State */
+.display-1 {
+  font-size: 6rem;
+  color: #bdbdbd;
+}
+
+.btn-home-action { /* Reusing button style from home page */
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #2196f3;
+  border-color: #2196f3;
+  color: #fff;
+}
+
+.btn-home-action:hover {
+  background-color: #1976d2;
+  border-color: #1976d2;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
+}
+
+/* Cart Summary Card */
+.cart-summary-card .card-title {
+  font-size: 1.8rem;
+  color: #3f51b5;
+}
+
+.summary-list .list-group-item {
+  font-size: 1.1rem;
+  padding: 1rem 0;
+  border-color: #eee !important;
+}
+
+.summary-list .list-group-item:last-child {
+  border-bottom: none !important;
+}
+
+.total-amount {
+  font-size: 1.4rem;
+  color: #2196f3;
+}
+
+.btn-checkout {
+  background-color: #28a745; /* Green for checkout */
+  border-color: #28a745;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+.btn-checkout:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-continue-shopping {
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-continue-shopping:hover {
+  background-color: #e9ecef;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(108, 117, 125, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .cart-item-img {
+    width: 80px;
+    height: 80px;
+  }
+  .cart-item-title {
+    font-size: 1.1rem;
+  }
+  .cart-item-price {
+    font-size: 1rem;
+  }
+  .qty-input {
+    width: 60px;
+    padding: 0.4rem;
+  }
+  .remove-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .btn-checkout {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  .btn-continue-shopping {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-item-list {
+    padding: 15px;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    text-align: center;
+  }
+  .cart-item-img {
+    margin-bottom: 10px;
+    align-self: center; /* Center image when column */
+  }
+  .flex-grow-1 {
+    width: 100%;
+    text-align: center;
+  }
+  .d-flex.align-items-center {
+    justify-content: center; /* Center quantity and remove button */
+    width: 100%;
+  }
+  .qty-input {
+    margin-right: 0 !important;
+  }
+}
+
+/* Toast Container Styling */
+.toast-container {
+  z-index: 1080; /* Ensure it's above modals and backdrops */
+  /* Bootstrap classes handle most of this: position-fixed bottom-0 end-0 p-3 */
+}
+
+/* Individual Toast Styling (optional, Bootstrap provides good defaults) */
+.toast {
+  max-width: 350px;
+}

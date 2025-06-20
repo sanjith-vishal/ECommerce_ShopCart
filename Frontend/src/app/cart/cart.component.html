@@ -1,0 +1,88 @@
+<div class="cart-container">
+  <div class="container my-5">
+    <h2 class="section-title text-center mb-5 animate__animated animate__fadeInDown">
+      <i class="bi bi-cart-check-fill me-3"></i>Your Shopping Cart
+    </h2>
+
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <div class="card cart-items-card p-4 animate__animated animate__fadeInLeft">
+          <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+            <div class="cart-item-list">
+              <div class="cart-item d-flex align-items-center mb-4 pb-3 border-bottom" *ngFor="let item of cartItems">
+                <img [src]="item.product.imageURL" class="cart-item-img me-4" [alt]="item.product.productName">
+                <div class="flex-grow-1">
+                  <h5 class="cart-item-title">{{ item.product.productName }}</h5>
+                  <p class="cart-item-price">₹{{ item.product.price | number:'1.2-2' }}</p>
+                  <div class="d-flex align-items-center">
+                    <label for="qty-{{ item.cartItemId }}" class="form-label mb-0 me-2">Qty:</label>
+                    <input type="number" id="qty-{{ item.cartItemId }}" class="form-control qty-input me-3" [(ngModel)]="item.quantity" min="1" (change)="updateQuantity(item)">
+                    <button class="btn btn-outline-danger btn-sm remove-btn" (click)="removeItem(item.cartItemId)">
+                      <i class="bi bi-trash-fill me-1"></i>Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #emptyCart>
+            <div class="text-center py-5">
+              <i class="bi bi-cart-x-fill display-1 text-muted mb-3"></i>
+              <p class="lead text-muted">Your cart is empty. Start shopping now!</p>
+              <a [routerLink]="['/products']" class="btn btn-primary mt-3 btn-home-action">
+                <i class="bi bi-shop me-2"></i>Go to Products
+              </a>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="card cart-summary-card p-4 animate__animated animate__fadeInRight">
+          <h5 class="card-title fw-bold text-center mb-4">Order Summary</h5>
+          <ul class="list-group list-group-flush summary-list">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Subtotal
+              <span>₹{{ calculateSubtotal() | number:'1.2-2' }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Shipping
+              <span>Free</span> </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-bold total-amount">
+              Total
+              <span>₹{{ (calculateSubtotal() + 0) | number:'1.2-2' }}</span>
+            </li>
+          </ul>
+
+          <div class="mt-3">
+            <label for="shippingAddress" class="form-label">Shipping Address:</label>
+            <textarea id="shippingAddress" class="form-control" rows="3" [(ngModel)]="shippingAddress" placeholder="Enter your full shipping address"></textarea>
+            <div *ngIf="!shippingAddress && cartItems.length > 0" class="text-danger mt-1">Shipping address is required.</div>
+          </div>
+
+          <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-success btn-checkout animate__animated animate__pulse animate__infinite" (click)="initiateCheckout()" [disabled]="!shippingAddress || cartItems.length === 0">
+              <i class="bi bi-credit-card-fill me-2"></i>Proceed to Checkout
+            </button>
+            <a [routerLink]="['/products']" class="btn btn-outline-secondary btn-continue-shopping">
+              <i class="bi bi-arrow-left-short me-2"></i>Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div *ngFor="let toast of toasts" class="toast fade show" [ngClass]="'text-bg-' + toast.type" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Notification</strong>
+        <small class="text-body-secondary">Just now</small>
+        <button type="button" class="btn-close" (click)="removeToast(toast.id)" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        {{ toast.message }}
+      </div>
+    </div>
+  </div>
+</div>

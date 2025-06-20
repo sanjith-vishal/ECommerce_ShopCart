@@ -1,0 +1,64 @@
+2025-06-20 14:19:30,097 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is not available. Remote download required.
+2025-06-20 14:20:28,848 [Worker-3: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:AdminService:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\AdminService\pom.xml.
+2025-06-20 14:20:50,920 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:20:50,955 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:20:50,964 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\AdminService\src\test\resources
+2025-06-20 14:20:53,723 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:20:53,726 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:20:53,732 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\AdminService\src\test\resources
+2025-06-20 14:20:57,982 [Worker-5: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mohit:Api-gateway:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\Api-gateway\pom.xml.
+2025-06-20 14:21:05,978 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:21:06,016 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:21:06,022 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\Api-gateway\src\test\resources
+2025-06-20 14:21:07,379 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:21:07,384 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:21:07,390 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\Api-gateway\src\test\resources
+2025-06-20 14:21:12,378 [Worker-8: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:ConfigServer:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ConfigServer\pom.xml.
+2025-06-20 14:21:22,291 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:21:22,320 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:21:22,327 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ConfigServer\src\test\resources
+2025-06-20 14:21:23,452 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:21:23,456 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:21:23,466 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ConfigServer\src\test\resources
+2025-06-20 14:21:26,974 [Worker-8: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:EurekaServer:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\EurekaServer\pom.xml.
+2025-06-20 14:21:39,022 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:21:39,072 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:21:39,082 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\EurekaServer\src\test\resources
+2025-06-20 14:21:41,162 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:21:41,162 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:21:41,178 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\EurekaServer\src\test\resources
+2025-06-20 14:21:48,960 [Worker-6: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:OrderService:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\OrderService\pom.xml.
+2025-06-20 14:22:03,416 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:22:03,490 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:22:03,503 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\OrderService\src\test\resources
+2025-06-20 14:22:10,070 [Worker-6: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:ProductService:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ProductService\pom.xml.
+2025-06-20 14:22:23,746 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:22:23,800 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:22:23,812 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ProductService\src\test\resources
+2025-06-20 14:22:31,414 [Worker-6: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.javatechie:spring-security-latest:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\Security-Service\pom.xml.
+2025-06-20 14:22:51,360 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:22:51,396 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:22:51,403 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\Security-Service\src\test\resources
+2025-06-20 14:22:57,463 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:22:57,501 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:22:57,510 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\OrderService\src\test\resources
+2025-06-20 14:23:00,437 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:23:00,460 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:23:00,469 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ProductService\src\test\resources
+2025-06-20 14:23:02,567 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:23:02,586 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:23:02,589 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\Security-Service\src\test\resources
+2025-06-20 14:23:07,954 [Worker-14: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:ShoppingCartService:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ShoppingCartService\pom.xml.
+2025-06-20 14:23:21,249 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:23:21,299 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:23:21,309 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ShoppingCartService\src\test\resources
+2025-06-20 14:23:29,295 [Worker-14: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:UserService:0.0.1-SNAPSHOT @ C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\UserService\pom.xml.
+2025-06-20 14:23:42,792 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:23:42,828 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:23:42,836 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\UserService\src\test\resources
+2025-06-20 14:23:46,333 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:23:46,333 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:23:46,350 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\ShoppingCartService\src\test\resources
+2025-06-20 14:23:47,952 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-20 14:23:47,958 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-20 14:23:47,970 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2400597\OneDrive - Cognizant\Desktop\ECommerce_ShopCart\Backend\UserService\src\test\resources
